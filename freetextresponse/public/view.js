@@ -98,13 +98,15 @@ function FreeTextResponseView(runtime, element) {
     }
 
     function display_responses_if_answered(response) {
-        if (!response.user_alert && response.display_other_responses) {
-            var responseHTML = get_student_responses_html(response.other_responses);
-            if (responseHTML) {
-                responseList.html(responseHTML);
-            }
-            $element.find('.responses-box').removeClass('hidden');
+        if (!response.display_other_responses) {
+            $element.find('.responses-box').addClass('hidden');
+            return;
         }
+        var responseHTML = get_student_responses_html(response.other_responses);
+        if (responseHTML) {
+            responseList.html(responseHTML);
+        }
+        $element.find('.responses-box').removeClass('hidden');
     }
 
     buttonSave.on('click', function () {
