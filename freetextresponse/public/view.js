@@ -68,7 +68,6 @@ function FreeTextResponseView(runtime, element) {
                 userAlertMessage.text(response.user_alert);
                 buttonSave.addClass(response.nodisplay_class);
                 setClassForTextAreaParent(response.indicator_class);
-
                 display_responses_if_answered(response);
 
                 $xblocksContainer.data(cachedAnswerId, $element.find('.student_answer').val());

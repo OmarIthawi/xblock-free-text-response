@@ -279,6 +279,7 @@ class FreeTextResponse(
             (Fragment): The HTML Fragment for this XBlock, which determines the
             general frame of the FreeTextResponse Question.
         """
+
         self.runtime.service(self, 'i18n')
         context.update(
             {
