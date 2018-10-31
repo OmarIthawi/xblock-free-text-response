@@ -30,7 +30,7 @@
     </div>
     <div class="capa_alert user_alert">{{ user_alert }}</div>
     {% if display_other_responses %}
-        <div class="responses-box {% if student_answer %}hidden{% endif %}">
+        <div class="responses-box {% if not student_answer %}hidden{% endif %}">
             <button class="hide-button">
                 <span class="hide">Hide</span>
                 <span class="show">Show</span>
