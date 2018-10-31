@@ -661,7 +661,6 @@ class FreeTextResponse(
         Does not return answers the student had submitted.
         """
         display_other_responses = self.display_other_student_responses
-        student_answer = self.student_answer
         shouldnt_show_other_responses = not display_other_responses
         student_hasnt_answered_properly = self._determine_credit() == Credit.zero
         if student_hasnt_answered_properly or shouldnt_show_other_responses:
