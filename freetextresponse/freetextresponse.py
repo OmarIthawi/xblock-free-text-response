@@ -666,7 +666,6 @@ class FreeTextResponse(
         student_hasnt_answered_properly = self._determine_credit() == Credit.zero
         if student_hasnt_answered_properly or shouldnt_show_other_responses:
             return []
-
         return_list = [
             response
             for response in self.displayable_answers
