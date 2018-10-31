@@ -93,6 +93,7 @@ function FreeTextResponseView(runtime, element) {
         responses.forEach(function(item) {
             html += '<li class="other-student-responses">' + item.answer + '</li>';
         });
+        html = html || '<li class="no-response">No responses to show at this time</li>';
         return html;
     }
 
@@ -102,9 +103,7 @@ function FreeTextResponseView(runtime, element) {
             return;
         }
         var responseHTML = get_student_responses_html(response.other_responses);
-        if (responseHTML) {
-            responseList.html(responseHTML);
-        }
+        responseList.html(responseHTML);
         $element.find('.responses-box').removeClass('hidden');
     }
 
