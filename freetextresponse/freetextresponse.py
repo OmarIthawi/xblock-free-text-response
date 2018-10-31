@@ -294,7 +294,7 @@ class FreeTextResponse(
                 'visibility_class': self._get_indicator_visibility_class(),
                 'word_count_message': self._get_word_count_message(),
                 'display_other_responses': self.display_other_student_responses,
-                'other_responses': self.get_other_answers(self.get_student_id()),
+                'other_responses': self.get_other_answers(),
             }
         )
         template = get_template('freetextresponse_view.html')
@@ -602,7 +602,7 @@ class FreeTextResponse(
             'user_alert': self._get_user_alert(
                 ignore_attempts=True,
             ),
-            'other_responses': self.get_other_answers(self.get_student_id()),
+            'other_responses': self.get_other_answers(),
             'display_other_responses': self.display_other_student_responses,
             'visibility_class': self._get_indicator_visibility_class(),
         }
@@ -654,12 +654,13 @@ class FreeTextResponse(
         # MAX_RESPONSES answers if their answer is in the pool.
         self.displayable_answers = self.displayable_answers[-(MAX_RESPONSES+1):]
 
-    def get_other_answers(self, student_id):
+    def get_other_answers(self):
         """
         Returns at most MAX_RESPONSES answers from the pool.
 
         Does not return answers the student had submitted.
         """
+        student_id = self.get_student_id()
         display_other_responses = self.display_other_student_responses
         shouldnt_show_other_responses = not display_other_responses
         student_hasnt_answered_properly = self._determine_credit() == Credit.zero
